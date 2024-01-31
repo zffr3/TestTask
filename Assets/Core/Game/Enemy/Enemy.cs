@@ -5,6 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
+    private AnimationController _animation;
+
+    [SerializeField]
     private ParticleEvent _splashEvent;
 
     [SerializeField]
@@ -14,14 +17,14 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        _splashEvent.SubscribeToEvent(() => Debug.Log("enemy hit"));
+        _splashEvent.SubscribeToEvent(() => _animation.PlayBlock());
         EventBus.SubscribeToEvent(EventType.SPLASH_ATTACK_ENEMY, ActivateSplashParticle);
         EventBus.SubscribeToEvent(EventType.SPELL_ATTACK_ENEMY, ActivateSpellParticle);
     }
 
     private void OnDestroy()
     {
-        _splashEvent.UnsubscribeFromEvent(() => Debug.Log("enemy hit"));
+        _splashEvent.UnsubscribeFromEvent(() => _animation.PlayBlock());
         EventBus.UnsubscribeFromEvent(EventType.SPLASH_ATTACK_ENEMY, ActivateSplashParticle);
         EventBus.UnsubscribeFromEvent(EventType.SPELL_ATTACK_ENEMY, ActivateSpellParticle);
     }

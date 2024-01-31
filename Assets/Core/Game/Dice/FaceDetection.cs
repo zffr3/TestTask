@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FaceDetection : MonoBehaviour
 {
     [SerializeField]
-    Dice _dice;
+    private Dice _dice;
 
+    private UnityAction<int> _onFaceDetected;
 
     private void OnTriggerStay(Collider other)
     {
@@ -17,10 +19,20 @@ public class FaceDetection : MonoBehaviour
                 int faceNum = -1;
                 if (int.TryParse(other.name, out faceNum))
                 {
-                    Debug.Log(faceNum);
+                    _onFaceDetected?.Invoke(faceNum);
                 }
 
             }
         }
+    }
+
+    public void SubscribeToEvent(UnityAction<int> handler)
+    {
+        _onFaceDetected += handler;
+    }
+
+    public void UnsubscribeFromEvent(UnityAction<int> handler)
+    {
+        _onFaceDetected += handler;
     }
 }
