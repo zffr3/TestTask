@@ -101,5 +101,8 @@ public static class EventBus
 
 public enum EventType
 {
-
+    SPLASH_ATTACK_PLAYER,
+    SPLASH_ATTACK_ENEMY,
+    SPELL_ATTACK_PLAYER,
+    SPELL_ATTACK_ENEMY
 }
