@@ -11,6 +11,12 @@ public class DiceController : MonoBehaviour
 
     private void OnEnable()
     {
+        if (_deckStates.Count == 0)
+        {
+            _deckStates.Add(DeckActivationStates.ByPlayer, EventType.DICE_VALUE_SETTED_PLAYER);
+            _deckStates.Add(DeckActivationStates.ByEnemy, EventType.DICE_VALUE_SETTED_ENEMY);
+        }
+
         _faceDetection.SubscribeToEvent(OnDiceValueSelected);
     }
 
@@ -27,12 +33,6 @@ public class DiceController : MonoBehaviour
 
     private void OnDiceValueSelected(int diceValue)
     {
-        if (_deckStates.Count == 0)
-        {
-            _deckStates.Add(DeckActivationStates.ByPlayer, EventType.DICE_VALUE_SETTED_PLAYER);
-            _deckStates.Add(DeckActivationStates.ByEnemy, EventType.DICE_VALUE_SETTED_ENEMY);
-        }
-
         if (diceValue != -1)
         {
             EventBus.Dispatch(_deckStates[_currentState], diceValue);
