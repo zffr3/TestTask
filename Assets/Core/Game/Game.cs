@@ -7,6 +7,9 @@ public class Game : MonoBehaviour
     [SerializeField]
     private Player _player;
 
+    [SerializeField]
+    private DiceController _diceDeck;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +21,7 @@ public class Game : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            _player.AttackWithSplashCast();
+            _diceDeck.ActivateDiceDeck(DeckActivationStates.ByPlayer);
         }
         if (Input.GetKeyUp(KeyCode.Q))
         {

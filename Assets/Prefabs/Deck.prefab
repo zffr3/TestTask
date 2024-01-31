@@ -1978,7 +1978,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6902104286966731898}
   - component: {fileID: 1977011248354720613}
-  - component: {fileID: 7054657701946543119}
   - component: {fileID: 7313828788958283281}
   m_Layer: 0
   m_Name: Camera
@@ -2033,7 +2032,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -2053,14 +2052,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &7054657701946543119
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6048174107288604881}
-  m_Enabled: 1
 --- !u!114 &7313828788958283281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2429,6 +2420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1696874062923150366}
+  - component: {fileID: 5903762130154819163}
   m_Layer: 0
   m_Name: Deck
   m_TagString: Untagged
@@ -2459,6 +2451,19 @@ Transform:
   - {fileID: 6902104286966731898}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5903762130154819163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817489971228744292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b5f63e94ef9c54fa77b7dd8c06a991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _faceDetection: {fileID: 4110623725108363314}
 --- !u!1 &8068224618145876018
 GameObject:
   m_ObjectHideFlags: 0

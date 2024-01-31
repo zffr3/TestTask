@@ -12,11 +12,13 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _animEvents.SubscribeToEvents(() => { }, ()=> EventBus.Dispatch(EventType.SPELL_ATTACK_ENEMY, null), ()=> EventBus.Dispatch(EventType.SPLASH_ATTACK_ENEMY, null));
+        EventBus.SubscribeToEvent(EventType.DICE_VALUE_SETTED_PLAYER, AttackWithSplashCast);
     }
 
-    public void AttackWithSplashCast()
+    public void AttackWithSplashCast(object damage)
     {
         _animation.PlaySplashCast();
+        Debug.Log($"Damage to enemy: {damage.ToString()}");
     }
     
     public void UseSpellToEnemy()
