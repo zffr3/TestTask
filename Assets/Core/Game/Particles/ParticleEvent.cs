@@ -3,19 +3,9 @@ using UnityEngine.Events;
 
 public class ParticleEvent : MonoBehaviour
 {
-    private UnityAction _particleStopped;
+    public event UnityAction ParticleStopped;
     private void OnParticleSystemStopped()
     {
-        _particleStopped?.Invoke();
-    }
-
-    public void SubscribeToEvent(UnityAction handler)
-    {
-        _particleStopped += handler;
-    }
-
-    public void UnsubscribeFromEvent(UnityAction handler) 
-    {
-        _particleStopped -= handler;
+        ParticleStopped?.Invoke();
     }
 }

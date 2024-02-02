@@ -512,6 +512,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8144037599045065202, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
   m_PrefabInstance: {fileID: 837409092}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &837409095 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4678103677468820507, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+  m_PrefabInstance: {fileID: 837409092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &866456976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1163,6 +1168,7 @@ GameObject:
   - component: {fileID: 1527874144}
   - component: {fileID: 1527874145}
   - component: {fileID: 1527874146}
+  - component: {fileID: 1527874147}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1275,9 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: {fileID: 1527874145}
-  _splashEvent: {fileID: 584782330}
-  _splashParticle: {fileID: 584782331}
-  _spellParticle: {fileID: 1329318868}
+  _particleController: {fileID: 1527874147}
 --- !u!114 &1527874145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,6 +1317,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealthCount: 100
   _currentHealthCount: 100
+--- !u!114 &1527874147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527874139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8357cbe0fec70439babb5eab45919b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _splashEvent: {fileID: 584782330}
+  _splashParticle: {fileID: 584782331}
+  _spellParticle: {fileID: 1329318868}
+  _healParticle: {fileID: 837409095}
 --- !u!1001 &319361187219305134
 PrefabInstance:
   m_ObjectHideFlags: 0

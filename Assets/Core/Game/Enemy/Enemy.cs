@@ -8,40 +8,29 @@ public class Enemy : MonoBehaviour
     private AnimationController _animation;
 
     [SerializeField]
-    private ParticleEvent _splashEvent;
-
-    [SerializeField]
-    private ParticleSystem _splashParticle;
-    [SerializeField]
-    private ParticleSystem _spellParticle;
+    private ParticleController _particleController;
 
     private void Awake()
     {
-        _splashEvent.SubscribeToEvent(() => _animation.PlayBlock());
+        _particleController.SplashEvent.ParticleStopped += () => _animation.PlayBlock();
         EventBus.SubscribeToEvent(EventType.SPLASH_ATTACK_ENEMY, ActivateSplashParticle);
         EventBus.SubscribeToEvent(EventType.SPELL_ATTACK_ENEMY, ActivateSpellParticle);
     }
 
     private void OnDestroy()
     {
-        _splashEvent.UnsubscribeFromEvent(() => _animation.PlayBlock());
+        _particleController.SplashEvent.ParticleStopped -= () => _animation.PlayBlock();
         EventBus.UnsubscribeFromEvent(EventType.SPLASH_ATTACK_ENEMY, ActivateSplashParticle);
         EventBus.UnsubscribeFromEvent(EventType.SPELL_ATTACK_ENEMY, ActivateSpellParticle);
     }
 
     private void ActivateSplashParticle(object param)
     {
-        if (_splashParticle != null)
-        {
-            _splashParticle.Play();
-        }
+        _particleController.PlaySplashParticle();
     }
 
     private void ActivateSpellParticle(object param)
     {
-        if (_spellParticle != null)
-        {
-            _spellParticle.Play();
-        }
+        _particleController?.PlaySpellParticle();
     }
 }
